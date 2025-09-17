@@ -1,0 +1,6 @@
+# Alle Textdateien automatisch konvertieren
+* text=auto
+
+# Java und FXML explizit
+*.java text
+*.fxml text

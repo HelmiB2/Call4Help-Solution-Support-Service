@@ -1,7 +1,7 @@
 # Call4Help Solutions Support (C4H)
 
 ## 1. Einführung
-Call4Help Solutions Support (C4H) ist eine plattformübergreifende Support-App für Windows, Android  
+Call4Help Solutions Support (C4H) ist eine plattformübergreifende Support-App für Windows.
 Sie vereinfacht den Zugriff auf IT-Support, stellt Geräteinformationen dar, bietet einen Ticketing-Modus und ermöglicht Ticket- sowie Chat-Funktionen.
 
 ---
@@ -54,11 +54,10 @@ Sie vereinfacht den Zugriff auf IT-Support, stellt Geräteinformationen dar, bie
 ---
 
 ## 3. Funktionen
-- Support-Chat & Ticket-Erstellung  
-- Kiosk-Modus mit WebView  
+- Support-Chat & Ticket-Erstellung 
 - Geräteinformationen (Modell, Seriennummer, IP, MAC, RAM usw.)  
 - Update-Checker für automatische Updates  
-- Logging für Desktop und Android  
+- Logging für Desktop 
 
 ---
 
@@ -88,7 +87,7 @@ java -jar target/C4HSolutionsSupport-2.0.0-jar-with-dependencies.jar
 - **Backend-Integration (optional):** REST-APIs für Tickets & Support  
 - **Modularer Aufbau:**  
   - Start-View Navigation  
-  - Kiosk-Modul  
+  - Kiosk-Modul( in Arbeit )
   - Chat- & Ticket-Modul  
   - Geräteinformation (plattformabhängig Desktop/Android)  
   - Update-Mechanismus  
@@ -112,12 +111,8 @@ java -jar target/C4HSolutionsSupport-2.0.0-jar-with-dependencies.jar
 - **Kann die App ohne Internet genutzt werden?**  
   Ja, lokale Module funktionieren. Für Support-Chat und Tickets ist Internet notwendig.  
 
-- **Unterstützt iOS?**  
-  Nein, aktuell nur Windows, Linux und Android.  
-
 ---
 
 ## 9. Roadmap
 - Remote-Control Integration  
 - Erweiterte Geräteanalyse  
-- Optional: iOS-Unterstützung  

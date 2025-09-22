@@ -1,0 +1,35 @@
+# Call4Help Testablauf
+
+## Installation
+- [ ] App über Baramundi installieren  
+- [ ] Icon auf Desktop prüfen  
+- [ ] App im Startmenü prüfen  
+- [ ] App starten  
+
+## Funktionen
+- [ ] Alle Buttons (Startseite + Untermenüs) testen  
+- [ ] Chatbot öffnen → Antwort prüfen  
+- [ ] Ticket-Erstellung  
+  - [ ] `setEnvBetriebsnummer.bat pf` oder `5678` ausführen  
+  - [ ] App neu starten  
+  - [ ] Ticket erstellen und bis zum Mailversand durchgehen  
+  - [ ] Interne Buttons prüfen  
+  - [ ] Ticket-Einträge kontrollieren  
+
+## Updateprüfung
+- [ ] Datei `homeuser/.c4h/update/cong.properties` öffnen  
+- [ ] Version `2.0.0` → auf `1.9.9` ändern und speichern  
+- [ ] App neu starten  
+- [ ] Prüfen: Update wird erkannt (Changelog sichtbar)  
+- [ ] Update starten oder App neu beenden → Installation läuft durch  
+- [ ] Danach prüfen: Version wieder `2.0.0` in `cong.properties`  
+
+## Logs
+- [ ] Log im Ordner `homeuser/.c4h/` öffnen  
+- [ ] Bemerkungen prüfen und in Ticket-Notizen übernehmen  
+- [ ] Log ggf. an Arafet und Helmi senden  
+
+## Abschlussprüfung
+- [ ] App nach Update erneut starten  
+- [ ] Buttons und Chatbot kurz prüfen  
+- [ ] Ticketfunktion nochmals durchspielen  

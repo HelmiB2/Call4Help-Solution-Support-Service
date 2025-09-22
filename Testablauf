@@ -10,7 +10,7 @@
 - [ ] Alle Buttons (Startseite + Untermenüs) testen  
 - [ ] Chatbot öffnen → Antwort prüfen  
 - [ ] Ticket-Erstellung  
-  - [ ] `setEnvBetriebsnummer.bat pf` oder `5678` ausführen  
+  - [ ] `setEnvBetriebsnummer.bat pf00` oder `5678` ausführen  
   - [ ] App neu starten  
   - [ ] Ticket erstellen und bis zum Mailversand durchgehen  
   - [ ] Interne Buttons prüfen  

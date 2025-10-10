@@ -85,7 +85,7 @@
                         <String fx:value="footer-logo" />
                     </styleClass>
                 </ImageView>
-            <Label alignment="CENTER" styleClass="footer-text" text="Powered by 3S Solution Support Service. Version 2" />
+            <Label alignment="CENTER" styleClass="footer-text" text="Powered by 3S Solution Support Service• Version 2" />
             </children>
         </VBox>
    </children>

@@ -47,14 +47,6 @@ local.properties
 captures/
 .externalNativeBuild/
 
-# Bilder
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.bmp
-*.svg
-*.webp
 
 # OS Dateien
 .DS_Store

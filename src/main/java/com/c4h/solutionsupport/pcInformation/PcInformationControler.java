@@ -147,22 +147,37 @@ public class PcInformationControler {
     	Logger.info("[PcInformationControler] Aktualisierung der Systeminformation");
     	geraetInfo();
     }
-    @FXML public void exportSystemInfo() {
+    @FXML
+    public void exportSystemInfo() {
         try {
             Logger.info("[PcInformationControler] Exportieren der Systeminformation gestartet");
 
+            // Systeminformationen ermitteln
             GeraeteInfo geraeteInfo = PlatformHelper.isAndroid() ? new InfoAndroid() : new InfoDesktop();
             String jsonText = geraeteInfo.toJson();
 
-            // Speicherort (hier Desktop des Users)
-            String filePath = System.getProperty("user.home") + "/Desktop/systeminfo.json";
-            java.nio.file.Files.write(java.nio.file.Paths.get(filePath), jsonText.getBytes());
+            // FileChooser für den Speicherort
+            javafx.stage.FileChooser fileChooser = new javafx.stage.FileChooser();
+            fileChooser.setTitle("Systeminformationen speichern");
+            fileChooser.getExtensionFilters().add(
+                new javafx.stage.FileChooser.ExtensionFilter("JSON-Datei", "*.json")
+            );
+            fileChooser.setInitialFileName("systeminfo.json");
 
-            Logger.info("[PcInformationControler] Systeminformationen exportiert nach: " + filePath);
+            // Dialog anzeigen (Explorer-ähnlich)
+            java.io.File file = fileChooser.showSaveDialog(null); // null öffnet in der Mitte
+            if (file != null) {
+                java.nio.file.Files.write(file.toPath(), jsonText.getBytes());
+                Logger.info("[PcInformationControler] Systeminformationen exportiert nach: " + file.getAbsolutePath());
+            } else {
+                Logger.info("[PcInformationControler] Export vom Benutzer abgebrochen");
+            }
+
         } catch (Exception e) {
             Logger.error("[PcInformationControler] Fehler beim Exportieren der Systeminformation: ", e);
         }
     }
+
     @FXML public void copySystemInfo() {
         try {
             Logger.info("[PcInformationControler] Kopieren der Systeminformation gestartet");

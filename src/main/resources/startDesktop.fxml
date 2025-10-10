@@ -131,7 +131,7 @@
             <Image url="@Logo/logoWeMakeITRMBack.png" />
           </image>
         </ImageView>
-        <Label alignment="CENTER" maxWidth="Infinity" styleClass="footer-text" text="Powered by 3S Solution Support Service. Version 2" />
+        <Label alignment="CENTER" maxWidth="Infinity" styleClass="footer-text" text="Powered by 3S Solution Support Service• Version 2" />
       </children>
     </VBox>
 

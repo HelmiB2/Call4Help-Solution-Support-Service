@@ -21,6 +21,9 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.PrintStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Hauptklasse der Call-for-Help-Anwendung.
@@ -187,7 +190,27 @@ public class MainC4H extends Application {
      * @param args Kommandozeilenargumente (nicht verwendet)
      */
     public static void main(String[] args) {
-        Logger.setLogger(getLoggerImplementation());
+    	try {
+            // Logs-Verzeichnis unter USERPROFILE/.c4h/logs erstellen
+            Path logDir = Paths.get(System.getProperty("user.home"), ".c4h", "logs");
+            if (!Files.exists(logDir)) {
+                Files.createDirectories(logDir);
+            }
+
+            // Datum im Format YYYY-MM-DD
+            String datum = java.time.LocalDate.now().toString();
+
+            // System-Property für java.util.logging setzen
+            System.setProperty("java.util.logging.FileHandler.pattern",
+                               logDir.resolve("errors_" + datum + ".log").toString());
+            System.setProperty("java.util.logging.FileHandler.limit", "5000000"); // 5 MB
+            System.setProperty("java.util.logging.FileHandler.count", "5");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    	
+    	Logger.setLogger(getLoggerImplementation());
         redirectConsoleOutput();
         launch(args);
     }

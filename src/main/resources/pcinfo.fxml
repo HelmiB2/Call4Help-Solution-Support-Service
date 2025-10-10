@@ -115,7 +115,7 @@
           </image>
         </ImageView>
         <!-- Footer Text -->
-        <Label alignment="CENTER" styleClass="footer-text" text="Powered by 3S Support Solutions Service• Version 2" />
+        <Label alignment="CENTER" styleClass="footer-text" text="Powered by 3S Solutions Support Service. Version 2" />
       </children>
     </VBox>
 

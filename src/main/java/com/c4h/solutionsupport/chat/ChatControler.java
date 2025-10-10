@@ -1,20 +1,30 @@
 package com.c4h.solutionsupport.chat;
 
+import java.awt.Desktop;
+import java.net.URI;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import com.c4h.solutionsupport.util.AntwortManager;
 import com.c4h.solutionsupport.util.Logger;
 import com.c4h.solutionsupport.util.OpenAIApi;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 
 /**
  * Controller class for the Chat interface in the C4H Support application.
@@ -36,7 +46,9 @@ public class ChatControler {
     @FXML private AnchorPane anchorPane;
     
     // ChatArea
-    @FXML private ListView<Label> chatListView;
+    //@FXML private ListView<Label> chatListView;
+    @FXML private ListView<Node> chatListView;
+
     @FXML private TextArea chatInput;
     @FXML private HBox inputBox; 
     
@@ -72,6 +84,25 @@ public class ChatControler {
         Label welcome = new Label("3S-Supporter: Hallo! Wie kann ich dir helfen?");
         welcome.setStyle("-fx-background-color: #E2E3E5; -fx-padding: 8; -fx-background-radius: 8;");
         chatListView.getItems().add(welcome);
+        
+        // **Enter-Taste zum Senden**
+        chatInput.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                onSendChatMessage();
+                event.consume(); // verhindert Zeilenumbruch
+            }
+        });
+     // **shift+Enter-Taste zum ZeilenUmbruch**
+        chatInput.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                if (!event.isShiftDown()) {
+                    onSendChatMessage();
+                    event.consume(); // verhindert Zeilenumbruch
+                }
+            }
+        });
+
+        
     }
 
     /**
@@ -99,12 +130,48 @@ public class ChatControler {
             String kiAntwort = getKiAntwort(userMsg);
 
             Platform.runLater(() -> {
-                Label botLabel = new Label("3S-Supporter: " + kiAntwort);
-                botLabel.setWrapText(true);
-                botLabel.setMaxWidth(chatListView.getWidth() - 20);
-                botLabel.setStyle("-fx-background-color: #E2E3E5; -fx-padding: 8; -fx-background-radius: 8;");
+                // TextFlow erzeugen, um Links klickbar zu machen
+                TextFlow textFlow = new TextFlow();
+                textFlow.setMaxWidth(chatListView.getWidth() - 20);
 
-                chatListView.getItems().add(botLabel);
+                // Regex für URLs
+                Pattern urlPattern = Pattern.compile("(https?://[\\w\\-\\.\\?\\&\\=\\/%#]+)", Pattern.CASE_INSENSITIVE);
+                Matcher matcher = urlPattern.matcher(kiAntwort);
+
+                int lastIndex = 0;
+                while (matcher.find()) {
+                    // normalen Text vor Link hinzufügen
+                    if (matcher.start() > lastIndex) {
+                        Text normalText = new Text(kiAntwort.substring(lastIndex, matcher.start()));
+                        textFlow.getChildren().add(normalText);
+                    }
+
+                    // Hyperlink hinzufügen
+                    String url = matcher.group(1);
+                    Hyperlink link = new Hyperlink(url);
+                    link.setOnAction(e -> {
+                        try {
+                            Desktop.getDesktop().browse(new URI(url));
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                    });
+                    textFlow.getChildren().add(link);
+
+                    lastIndex = matcher.end();
+                }
+
+                // Restlichen Text hinzufügen
+                if (lastIndex < kiAntwort.length()) {
+                    Text remainingText = new Text(kiAntwort.substring(lastIndex));
+                    textFlow.getChildren().add(remainingText);
+                }
+
+                // VBox für Hintergrund, Padding, Rundung
+                VBox botMessage = new VBox(textFlow);
+                botMessage.setStyle("-fx-background-color: #E2E3E5; -fx-padding: 8; -fx-background-radius: 8;");
+
+                chatListView.getItems().addAll(botMessage);
                 chatListView.scrollTo(chatListView.getItems().size() - 1);
             });
         }).start();

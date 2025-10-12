@@ -34,7 +34,7 @@ public class OpenAIApi {
     public static String sendPrompt(String prompt) throws Exception {
 
         if (API_KEY == null || API_KEY.isEmpty()) {
-            return "⚠️ Kein API-Key gefunden – bitte .env-Datei oder Android-Konfiguration prüfen.";
+            return " Kein API-Key gefunden prüfen.";
         }
 
         HttpClient client = HttpClient.newHttpClient();
@@ -68,7 +68,7 @@ public class OpenAIApi {
 
         List<?> choices = (List<?>) map.get("choices");
         if (choices == null || choices.isEmpty()) {
-            return "⚠️ Keine Antwort von der KI erhalten.";
+            return "Keine Antwort von der KI erhalten.";
         }
 
         Map<?, ?> messageObj = (Map<?, ?>) ((Map<?, ?>) choices.get(0)).get("message");
@@ -100,7 +100,7 @@ public class OpenAIApi {
      * Zum Beispiel über `BuildConfig.OPENAI_API_KEY` oder `context.getString(R.string.openai_api_key)`
      */
 	private static String getAndroidApiKey() {
-		// TODO: API Key aus Android-Kontext holen
+		// TODO: API Key Kontext holen
 		return System.getenv("OPENAI_API_KEY");  // oder leer lassen für Tests
 	}
 }

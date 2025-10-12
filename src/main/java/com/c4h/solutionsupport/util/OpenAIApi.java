@@ -101,6 +101,7 @@ public class OpenAIApi {
      */
 	private static String getAndroidApiKey() {
 		// TODO: API Key Kontext holen
-		return System.getenv("OPENAI_API_KEY");  // oder leer lassen für Tests
+	//	return System.getenv("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");  // oder leer lassen für Tests
+		return "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";  // oder leer lassen für Tests
 	}
 }

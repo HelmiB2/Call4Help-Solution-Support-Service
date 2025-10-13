@@ -101,7 +101,6 @@ public class OpenAIApi {
      */
 	private static String getAndroidApiKey() {
 		// TODO: API Key Kontext holen
-		return System.getenv("OPENAI_API_KEY");  // oder leer lassen für Tests
-		
+		return System.getenv("OPENAI_API_KEY");  // oder leer lassen für Tests	
 	}
 }

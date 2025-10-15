@@ -6,7 +6,12 @@
 
     <groupId>com.c4h</groupId>
     <artifactId>C4HSolutionsSupport</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
+    
+    <modules>
+    	<module>supporter</module>
+	</modules>
+
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

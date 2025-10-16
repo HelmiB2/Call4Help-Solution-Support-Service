@@ -12,14 +12,14 @@ public class SupporterStartViewController {
     public void initialize() {
         // Nur diese Module laden
         loadModule("Chat");
-		/*
-		 * loadModule("Mitarbeiter"); loadModule("Ticket");
-		 */
+		
+		loadModule("Mitarbeiter"); loadModule("Ticket");
+		
     }
 
     private void loadModule(String moduleName) {
         try {
-        	FXMLLoader loader = new FXMLLoader(getClass().getResource("/" + "chat" + ".fxml"));
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("/" + "startDesktop" + ".fxml"));
             moduleContainer.getChildren().add(loader.load());
         } catch (Exception e) {
             e.printStackTrace();

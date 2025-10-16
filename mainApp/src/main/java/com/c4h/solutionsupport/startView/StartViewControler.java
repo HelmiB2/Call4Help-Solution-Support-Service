@@ -2,10 +2,14 @@ package com.c4h.solutionsupport.startView;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -33,6 +37,21 @@ public class StartViewControler {
 
     // Logo
     @FXML private ImageView logoView;
+    
+    @FXML private Set<String> enabledModules = new HashSet<>();
+
+    public void setEnabledModules(String... modules) {
+        enabledModules.addAll(Arrays.asList(modules));
+        updateButtons();
+    }
+
+    @FXML private void updateButtons() {
+    	btnCallSupport.setVisible(enabledModules.contains("chat"));
+    	btnSendTicket.setVisible(enabledModules.contains("Ticket"));
+    	btnGeraeteInfo.setVisible(enabledModules.contains("pcInfo"));
+    	btn3sMitarbeiter.setVisible(enabledModules.contains("intern"));
+    	
+    }
 
     @FXML
     public void initialize() {
@@ -166,4 +185,18 @@ public class StartViewControler {
             Logger.warn("[StartViewControler] Scene oder Root ist null – applyTransition fehlgeschlagen", null);
         }
     }
+
+	public Node getBtn3sMitarbeiter() {
+		// TODO Auto-generated method stub
+		return btn3sMitarbeiter;
+	}
+
+	public Node getBtnGeraeteInfo() {
+		// TODO Auto-generated method stub
+		return btnGeraeteInfo;
+	}
+	public Node getBtnCallSupport() {
+		// TODO Auto-generated method stub
+		return btnCallSupport;
+	}
 }

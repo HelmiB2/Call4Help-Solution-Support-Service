@@ -15,15 +15,19 @@
     <artifactId>supporter</artifactId>
     <packaging>jar</packaging>
 
+    <properties>
+        <javafx.version>21.0.1</javafx.version>
+    </properties>
+
     <dependencies>
-        <!-- Abhängigkeit auf das Hauptprojekt -->
+        <!-- Abhängigkeit auf das Hauptprojekt (nur für FXML/Controller) -->
         <dependency>
             <groupId>com.c4h</groupId>
             <artifactId>mainApp</artifactId>
             <version>2.0.0</version>
         </dependency>
 
-        <!-- JavaFX (wenn du hier FXMLs laden willst, z.B. Chat/Ticket/Mitarbeiter) -->
+        <!-- JavaFX -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
@@ -45,6 +49,16 @@
                 </includes>
             </resource>
         </resources>
-    </build>
 
+        <plugins>
+            <!-- JavaFX Maven Plugin -->
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                 <configuration>
+                    <mainClass>com.c4h.supporter.SupporterApp</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

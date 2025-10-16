@@ -1,0 +1,4 @@
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.c4h.supporter.SupporterStartViewController">
+</VBox>

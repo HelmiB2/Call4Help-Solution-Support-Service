@@ -43,11 +43,15 @@
     <build>
         <resources>
             <resource>
-                <directory>src/main/resources</directory>
+                <directory>../mainApp/src/main/resources</directory>
+                <filtering>false</filtering>
                 <includes>
                     <include>**/*</include>
-                </includes>
+                </includes>    
             </resource>
+           	<resource>
+      		    <directory>src/main/resources</directory>
+    		</resource>
         </resources>
 
         <plugins>

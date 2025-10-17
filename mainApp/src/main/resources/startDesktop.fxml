@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="anchorPane" styleClass="main-container" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.c4h.solutionsupport.startView.StartViewControler">
+  <children>
+
+    <!-- Header Section -->
+    <VBox alignment="CENTER" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+          <children>
+            <Button maxWidth="Infinity" styleClass="breadcrumb-button" text="Home" />
+          </children>
+        </HBox>
+        <Label fx:id="labelOnten" alignment="CENTER" contentDisplay="CENTER" maxWidth="Infinity" styleClass="main-title" text="Solution Support Service" wrapText="true" />
+        <Label alignment="CENTER" maxWidth="Infinity" styleClass="subtitle" text="Ihr IT-Service Center" wrapText="true" />
+        <Separator prefWidth="200.0" styleClass="title-separator" />
+      </children>
+    </VBox>
+
+    <!-- Logo Section -->
+    <HBox alignment="CENTER" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="150.0">
+      <children>
+        <ImageView fx:id="logoView" fitHeight="120.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" styleClass="main-logo">
+          <image>
+            <Image url="@Logo/3SLogo.png" />
+          </image>
+        </ImageView>
+      </children>
+    </HBox>
+
+    <!-- Main Content Panel -->
+    <VBox fx:id="helpdeskBox" alignment="CENTER" spacing="10.0" styleClass="helpdesk-panel" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="280.0">
+      <children>
+
+        <!-- Panel Header -->
+        <VBox alignment="CENTER" spacing="1.0">
+          <children>
+            <Label alignment="CENTER" maxWidth="Infinity" styleClass="panel-title" text="C4H-Helpdesk" />
+            <Label alignment="CENTER" maxWidth="Infinity" styleClass="panel-subtitle" text="Schnelle Hilfe für alle IT-Anliegen" />
+          </children>
+        </VBox>
+
+        <!-- Primary Actions -->
+        <VBox spacing="15.0">
+          <children>
+            <HBox alignment="CENTER" spacing="20.0">
+              <children>
+                <Button fx:id="btnSendTicket" maxWidth="Infinity" prefHeight="50.0" prefWidth="180.0" styleClass="primary-button" text="Ticket erstellen">
+                  <graphic>
+                    <Region styleClass="ticket-icon" />
+                  </graphic>
+                </Button>
+                <Button fx:id="btnCallSupport" maxWidth="Infinity" prefHeight="50.0" prefWidth="180.0" styleClass="primary-button" text="Live Chat">
+                  <graphic>
+                    <Region styleClass="chat-icon" />
+                  </graphic>
+                </Button>
+              </children>
+            </HBox>
+
+            <!-- Secondary Actions -->
+            <HBox alignment="CENTER" spacing="20.0">
+              <children>
+                <Button fx:id="btnGeraeteInfo" maxWidth="Infinity" prefHeight="45.0" prefWidth="180.0" styleClass="secondary-button" text="Geräte-Info">
+                  <graphic>
+                    <Region styleClass="device-icon" />
+                  </graphic>
+                </Button>
+                <Button fx:id="btn3sMitarbeiter" maxWidth="Infinity" prefHeight="45.0" prefWidth="180.0" styleClass="secondary-button" text="Intern">
+                  <graphic>
+                    <Region styleClass="team-icon" />
+                  </graphic>
+                </Button>
+              </children>
+            </HBox>
+          </children>
+        </VBox>
+
+        <!-- Quick Info Section -->
+        <VBox alignment="CENTER">
+          <children>
+            <Label alignment="CENTER" maxWidth="Infinity" styleClass="info-title" text="Schnelle Hilfe" />
+            <HBox alignment="CENTER" spacing="30.0">
+              <children>
+                <VBox alignment="CENTER" spacing="5.0">
+                  <children>
+                    <Label styleClass="info-number" text="Mo-Fr" />
+                    <Label styleClass="info-text" text="8-16h" />
+                  </children>
+                </VBox>
+                <VBox alignment="CENTER" spacing="5.0">
+                  <children>
+                    <Label styleClass="info-number" text="1h" />
+                    <Label styleClass="info-text" text="Reaktionszeit" />
+                  </children>
+                </VBox>
+                <VBox alignment="CENTER" spacing="5.0">
+                  <children>
+                    <Label styleClass="info-number" text="100%" />
+                    <Label styleClass="info-text" text="Support" />
+                  </children>
+                </VBox>
+              </children>
+            </HBox>
+          </children>
+        </VBox>
+
+      </children>
+      <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+      </padding>
+    </VBox>
+
+    <!-- Footer Section -->
+    <VBox alignment="CENTER" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
+      <children>
+        <ImageView fitHeight="60.0" fitWidth="300.0" preserveRatio="true" styleClass="footer-logo">
+          <image>
+            <Image url="@Logo/logoWeMakeITRMBack.png" />
+          </image>
+        </ImageView>
+        <Label alignment="CENTER" maxWidth="Infinity" styleClass="footer-text" text="Powered by 3S Solution Support Service• Version 2" />
+      </children>
+    </VBox>
+
+  </children>
+
+  <padding>
+    <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+  </padding>
+
+  <stylesheets>
+    <URL value="@Style/desktop.css" />
+  </stylesheets>
+</AnchorPane>

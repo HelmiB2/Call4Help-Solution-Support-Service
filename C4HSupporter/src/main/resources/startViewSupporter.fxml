@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="anchorPane" styleClass="main-container" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.c4h.supporter.SupporterStartViewController">
+<AnchorPane fx:id="anchorPane" styleClass="main-container" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.c4h.supporter.SupporterStartViewController">
   <children>
 
     <!-- Header Section -->

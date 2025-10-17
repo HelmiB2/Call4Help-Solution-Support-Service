@@ -6,24 +6,28 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.c4h</groupId>
-    <artifactId>C4HSolutionsSupport-Parent</artifactId>
+    <artifactId>C4HSolutionsSupport</artifactId>
     <version>2.0.0</version>
     <packaging>pom</packaging>
 
+    <!-- Module definieren -->
+    <modules>
+        <module>core</module>
+        <module>C4H</module>
+        <module>C4Hsupporter</module>
+    </modules>
+
+    <!-- Versionsverwaltung -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>21</maven.compiler.release>
         <javafx.version>21.0.1</javafx.version>
-        <charm.version>6.2.3</charm.version>
         <attach.version>4.0.21</attach.version>
-        <main.class>com.c4h.solutionsupport.MainC4H</main.class>
+        <charm.version>6.2.3</charm.version>
+        <gluonfx.maven.plugin.version>1.0.26</gluonfx.maven.plugin.version>
+        <gluonfx.target>host</gluonfx.target>
     </properties>
-
-    <modules>
-        <module>mainApp</module>
-        <module>supporter</module>
-    </modules>
-
+    <!-- Repository definieren -->
     <repositories>
         <repository>
             <id>gluon-releases</id>
@@ -31,46 +35,4 @@
         </repository>
     </repositories>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <!-- Compiler -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.10.1</version>
-                    <configuration>
-                        <release>${maven.compiler.release}</release>
-                    </configuration>
-                </plugin>
-
-                <!-- JavaFX Plugin für Desktop -->
-                <plugin>
-                    <groupId>org.openjfx</groupId>
-                    <artifactId>javafx-maven-plugin</artifactId>
-                    <version>0.0.8</version>
-                    <configuration>
-                        <mainClass>${main.class}</mainClass>
-                    </configuration>
-                </plugin>
-
-                <!-- Executable Jar mit Dependencies -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-assembly-plugin</artifactId>
-                    <version>3.7.1</version>
-                    <configuration>
-                        <descriptorRefs>
-                            <descriptorRef>jar-with-dependencies</descriptorRef>
-                        </descriptorRefs>
-                        <archive>
-                            <manifest>
-                                <mainClass>${main.class}</mainClass>
-                            </manifest>
-                        </archive>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 </project>
